@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 02 - Perú: Playas y Ciudades | Desarrollo Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind con colores peruanos -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peru-red': '#D91023',
+                        'peru-dark': '#0f0f0f',
+                        'peru-card': '#1a1a1a',
+                        'peru-border': '#2a2a2a',
+                    },
+                    fontFamily: {
+                        'display': ['Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* =========================================
+           FONDO CON MARCA PERÚ SUTIL
+           ========================================= */
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                /* Marca Perú de fondo */
+                radial-gradient(circle at 10% 20%, rgba(217, 16, 35, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(217, 16, 35, 0.06) 0%, transparent 40%),
+                /* Patrón sutil de líneas */
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            position: relative;
+        }
+
+        /* Texto "PERÚ" gigante de fondo */
+        body::before {
+            content: "PERÚ";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30vw;
+            font-weight: 900;
+            color: rgba(217, 16, 35, 0.03);
+            letter-spacing: 0.2em;
+            z-index: 0;
+            pointer-events: none;
+            font-family: Georgia, serif;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           EFECTOS HOVER CON MATEMÁTICAS DE SIMETRÍA
+           ========================================= */
+        .btn-playa, .btn-ciudad {
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-playa:hover, .btn-ciudad:hover {
+            color: #d1d5db; /* gray-300 - gris claro simétrico */
+        }
+
+        /* =========================================
+           ANIMACIÓN DE IMÁGENES EN CARDS DE PLAYAS
+           ========================================= */
+        .card-playa .img-playa {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.6s ease;
+        }
+        .card-playa:hover .img-playa {
+            transform: scale(1.15) rotate(1deg);
+            filter: brightness(0.7) saturate(1.2);
+        }
+
+        /* Overlay que aparece al hacer hover */
+        .card-playa .overlay-playa {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .card-playa:hover .overlay-playa {
+            opacity: 1;
+        }
+
+        /* =========================================
+           ANIMACIÓN DE ENTRADA DE LAS CARDS
+           ========================================= */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card-animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        .card-animate:nth-child(1) { animation-delay: 0.1s; }
+        .card-animate:nth-child(2) { animation-delay: 0.2s; }
+        .card-animate:nth-child(3) { animation-delay: 0.3s; }
+        .card-animate:nth-child(4) { animation-delay: 0.4s; }
+        .card-animate:nth-child(5) { animation-delay: 0.5s; }
+
+        /* =========================================
+           EFECTO GLASSMORPHISM EN HEADERS
+           ========================================= */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* =========================================
+           SCROLLBAR PERSONALIZADA
+           ========================================= */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D91023;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b00d1c;
+        }
+
+        /* =========================================
+           LÍNEA DECORATIVA PERUANA
+           ========================================= */
+        .peru-line {
+            background: linear-gradient(90deg, transparent, #D91023, transparent);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen font-sans relative z-10">
+
+    <!-- ========================================= -->
+    <!-- HEADER CON IDENTIDAD PERUANA              -->
+    <!-- ========================================= -->
+    <header class="glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Escudo/Marca Perú simplificado -->
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-peru-red to-red-800 flex items-center justify-center shadow-lg shadow-peru-red/30">
+                    <span class="text-white font-bold text-lg">P</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight">Perú<span class="text-peru-red">.</span>Explora</h1>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Playas y Ciudades</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
+                <a href="#" class="hover:text-peru-red transition-colors">Inicio</a>
+                <a href="#" class="hover:text-peru-red transition-colors">Playas</a>
+                <a href="#" class="hover:text-peru-red transition-colors">Ciudades</a>
+                <a href="#" class="hover:text-peru-red transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- HERO SECTION CON MARCA PERÚ               -->
+    <!-- ========================================= -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-8 text-center">
+        <div class="inline-block mb-4">
+            <span class="text-xs font-bold uppercase tracking-[0.3em] text-peru-red border border-peru-red/30 px-4 py-1.5 rounded-full">
+                🇵🇪 Descubre el Perú
+            </span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">
+            Playas y Ciudades <span class="text-peru-red">del Perú</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+            Explora los destinos más impresionantes de nuestro país. Desde las playas del norte hasta las ciudades históricas de la sierra.
+        </p>
+        <div class="peru-line max-w-xs mx-auto mt-6"></div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- GRID PRINCIPAL: 1 Fila, 2 Columnas        -->
+    <!-- ========================================= -->
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 md:px-8 pb-16">
+        
+        <!-- ========================================== -->
+        <!-- COLUMNA A: Top 10 Playas del Perú          -->
+        <!-- ========================================== -->
+        <section class="flex flex-col">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-8 bg-peru-red rounded-full"></div>
+                <h2 class="text-2xl font-bold text-gray-100">
+                    Top 10 Playas del Perú
+                </h2>
+            </div>
+            
+            <!-- Flexbox con separación de 10px -->
+            <div class="flex flex-wrap justify-center gap-[10px]">
+                
+                <!-- Card 1: Punta Sal -->
+                <article class="card-playa card-animate relative w-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="relative w-[200px] h-[120px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=400&auto=format&fit=crop" 
+                             alt="Punta Sal" 
+                             class="img-playa w-full h-full object-cover">
+                        <div class="overlay-playa absolute inset-0"></div>
+                        <span class="absolute top-2 right-2 bg-peru-red/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            #10
+                        </span>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Number 10</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Punta Sal</h4>
+                            <p class="text-xs text-gray-400">Tumbes, Perú</p>
+                        </div>
+                        <div class="flex gap-4 mt-1">
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">SHARE</button>
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">EXPLORE</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: Máncora -->
+                <article class="card-playa card-animate relative w-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="relative w-[200px] h-[120px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400&auto=format&fit=crop" 
+                             alt="Máncora" 
+                             class="img-playa w-full h-full object-cover">
+                        <div class="overlay-playa absolute inset-0"></div>
+                        <span class="absolute top-2 right-2 bg-peru-red/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            #9
+                        </span>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Number 9</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Máncora</h4>
+                            <p class="text-xs text-gray-400">Piura, Perú</p>
+                        </div>
+                        <div class="flex gap-4 mt-1">
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">SHARE</button>
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">EXPLORE</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: Zorritos -->
+                <article class="card-playa card-animate relative w-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="relative w-[200px] h-[120px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=400&auto=format&fit=crop" 
+                             alt="Zorritos" 
+                             class="img-playa w-full h-full object-cover">
+                        <div class="overlay-playa absolute inset-0"></div>
+                        <span class="absolute top-2 right-2 bg-peru-red/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            #8
+                        </span>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Number 8</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Zorritos</h4>
+                            <p class="text-xs text-gray-400">Tumbes, Perú</p>
+                        </div>
+                        <div class="flex gap-4 mt-1">
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">SHARE</button>
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">EXPLORE</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4: El Silencio -->
+                <article class="card-playa card-animate relative w-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="relative w-[200px] h-[120px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=400&auto=format&fit=crop" 
+                             alt="El Silencio" 
+                             class="img-playa w-full h-full object-cover">
+                        <div class="overlay-playa absolute inset-0"></div>
+                        <span class="absolute top-2 right-2 bg-peru-red/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            #7
+                        </span>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Number 7</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">El Silencio</h4>
+                            <p class="text-xs text-gray-400">Lima, Perú</p>
+                        </div>
+                        <div class="flex gap-4 mt-1">
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">SHARE</button>
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">EXPLORE</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5: Paracas -->
+                <article class="card-playa card-animate relative w-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="relative w-[200px] h-[120px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400&auto=format&fit=crop" 
+                             alt="Paracas" 
+                             class="img-playa w-full h-full object-cover">
+                        <div class="overlay-playa absolute inset-0"></div>
+                        <span class="absolute top-2 right-2 bg-peru-red/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            #6
+                        </span>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Number 6</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Paracas</h4>
+                            <p class="text-xs text-gray-400">Ica, Perú</p>
+                        </div>
+                        <div class="flex gap-4 mt-1">
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">SHARE</button>
+                            <button class="btn-playa text-[10px] font-bold uppercase tracking-widest text-yellow-500">EXPLORE</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Puedes agregar las 5 playas restantes aquí -->
+                
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- COLUMNA B: Top 10 Ciudades del Perú        -->
+        <!-- ========================================== -->
+        <section class="flex flex-col">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-8 bg-peru-red rounded-full"></div>
+                <h2 class="text-2xl font-bold text-gray-100">
+                    Top 10 Ciudades del Perú
+                </h2>
+            </div>
+            
+            <!-- Flexbox con separación de 5px -->
+            <div class="flex flex-wrap justify-center gap-[5px]">
+                
+                <!-- Card Ciudad 1: Lima (Recreando el diseño de Florida) -->
+                <article class="card-animate w-[250px] h-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl flex flex-col border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="p-3 pb-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-white font-bold text-lg">Lima</h3>
+                            <span class="text-[10px] text-peru-red font-bold uppercase tracking-widest">Capital</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-xs text-gray-400">Alerta de tráfico</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-3 flex-1">
+                        <span class="text-4xl font-light text-white">24°C</span>
+                        <svg class="w-10 h-10 text-peru-red" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="px-3 pb-2 flex justify-between items-center text-xs text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            <span>15 km/h</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                            <span>82%</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-peru-border px-3 py-2">
+                        <button class="btn-ciudad text-xs font-bold uppercase tracking-widest text-yellow-500">FULL REPORT</button>
+                    </div>
+                </article>
+
+                <!-- Card Ciudad 2: Arequipa -->
+                <article class="card-animate w-[250px] h-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl flex flex-col border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="p-3 pb-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-white font-bold text-lg">Arequipa</h3>
+                            <span class="text-[10px] text-peru-red font-bold uppercase tracking-widest">Ciudad Blanca</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-xs text-gray-400">Actividad volcánica</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-3 flex-1">
+                        <span class="text-4xl font-light text-white">18°C</span>
+                        <svg class="w-10 h-10 text-peru-red" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="px-3 pb-2 flex justify-between items-center text-xs text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            <span>22 km/h</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                            <span>45%</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-peru-border px-3 py-2">
+                        <button class="btn-ciudad text-xs font-bold uppercase tracking-widest text-yellow-500">FULL REPORT</button>
+                    </div>
+                </article>
+
+                <!-- Card Ciudad 3: Cusco -->
+                <article class="card-animate w-[250px] h-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl flex flex-col border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="p-3 pb-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-white font-bold text-lg">Cusco</h3>
+                            <span class="text-[10px] text-peru-red font-bold uppercase tracking-widest">Capital Histórica</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-xs text-gray-400">Lluvias intensas</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-3 flex-1">
+                        <span class="text-4xl font-light text-white">12°C</span>
+                        <svg class="w-10 h-10 text-peru-red" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="px-3 pb-2 flex justify-between items-center text-xs text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            <span>8 km/h</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                            <span>78%</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-peru-border px-3 py-2">
+                        <button class="btn-ciudad text-xs font-bold uppercase tracking-widest text-yellow-500">FULL REPORT</button>
+                    </div>
+                </article>
+
+                <!-- Card Ciudad 4: Trujillo -->
+                <article class="card-animate w-[250px] h-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl flex flex-col border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="p-3 pb-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-white font-bold text-lg">Trujillo</h3>
+                            <span class="text-[10px] text-peru-red font-bold uppercase tracking-widest">Ciudad de la Eterna Primavera</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-xs text-gray-400">Vientos fuertes</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-3 flex-1">
+                        <span class="text-4xl font-light text-white">22°C</span>
+                        <svg class="w-10 h-10 text-peru-red" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="px-3 pb-2 flex justify-between items-center text-xs text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            <span>30 km/h</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                            <span>65%</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-peru-border px-3 py-2">
+                        <button class="btn-ciudad text-xs font-bold uppercase tracking-widest text-yellow-500">FULL REPORT</button>
+                    </div>
+                </article>
+
+                <!-- Card Ciudad 5: Iquitos -->
+                <article class="card-animate w-[250px] h-[200px] bg-peru-card rounded-xl overflow-hidden shadow-xl flex flex-col border border-peru-border hover:border-peru-red/50 transition-all duration-300 hover:shadow-2xl hover:shadow-peru-red/10">
+                    <div class="p-3 pb-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-white font-bold text-lg">Iquitos</h3>
+                            <span class="text-[10px] text-peru-red font-bold uppercase tracking-widest">Capital de la Amazonía</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-xs text-gray-400">Alta humedad</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-3 flex-1">
+                        <span class="text-4xl font-light text-white">32°C</span>
+                        <svg class="w-10 h-10 text-peru-red" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="px-3 pb-2 flex justify-between items-center text-xs text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            <span>5 km/h</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                            <span>95%</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-peru-border px-3 py-2">
+                        <button class="btn-ciudad text-xs font-bold uppercase tracking-widest text-yellow-500">FULL REPORT</button>
+                    </div>
+                </article>
+
+                <!-- Puedes agregar las 5 ciudades restantes aquí -->
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================= -->
+    <!-- FOOTER CON IDENTIDAD PERUANA              -->
+    <!-- ========================================= -->
+    <footer class="glass-header mt-8">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-peru-red to-red-800 flex items-center justify-center">
+                    <span class="text-white font-bold text-sm">P</span>
+                </div>
+                <span class="text-sm text-gray-400">Perú<span class="text-peru-red">.</span>Explora</span>
+            </div>
+            <p class="text-xs text-gray-500 text-center">
+                © 2026 Perú Explora. Todos los derechos reservados. Hecho con 🇵🇪 en Perú.
+            </p>
+            <div class="flex gap-4 text-xs text-gray-500">
+                <a href="#" class="hover:text-peru-red transition-colors">Términos</a>
+                <a href="#" class="hover:text-peru-red transition-colors">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
