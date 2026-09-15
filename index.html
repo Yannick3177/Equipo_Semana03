@@ -3,65 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño web con 3 cards animados</title>
+    <title>Página Principal - Práctica Calificada 2</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white min-h-screen flex flex-col justify-between items-center py-12">
+<body class="bg-[#f0f2f5] text-gray-800 min-h-screen flex flex-col justify-between py-8 px-4 md:px-12">
 
-    <header class="mb-10">
-        <h1 class="text-2xl md:text-3xl font-medium text-gray-800 tracking-tight">Diseño web con 3 cards animados</h1>
+    <!-- CONTENEDOR SUPERIOR: Título y los 3 Cards Animados (Punto 5.a y 5.b) -->
+    <header class="text-center mb-12">
+        <h1 class="text-2xl md:text-3xl font-medium text-gray-800 tracking-wide">Diseño web con 3 cards animados</h1>
     </header>
 
-    <main class="container mx-auto px-4 flex justify-center items-center">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+    <main class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto mb-16">
             
-            <!-- CARD 1 -> Enlaza a page1.html -->
-            <a href="Page1.html" class="group [perspective:1000px] h-72 block">
-                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
-                    <!-- Frente del Card -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+            <!-- CARD 1 -> Vincula a page1.html -->
+            <a href="page1.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-lg rounded-2xl">
+                    <div class="absolute inset-0 w-full h-full bg-[#75b9e7] rounded-2xl flex items-center justify-center text-white text-3xl font-medium [backface-visibility:hidden]">
                         page1
                     </div>
-                    <!-- Reverso del Card (al girar) -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
-                        Ir a Page 1
+                    <div class="absolute inset-0 w-full h-full bg-[#4682b4] rounded-2xl flex items-center justify-center text-white text-2xl font-medium [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir al Paso 1
                     </div>
                 </div>
             </a>
 
-            <!-- CARD 2 -> Enlaza a Page2.html -->
-            <a href="Page2.html" class="group [perspective:1000px] h-72 block">
-                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
-                    <!-- Frente del Card -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+            <!-- CARD 2 -> Vincula a page2.html -->
+            <a href="page2.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-lg rounded-2xl">
+                    <div class="absolute inset-0 w-full h-full bg-[#75b9e7] rounded-2xl flex items-center justify-center text-white text-3xl font-medium [backface-visibility:hidden]">
                         page2
                     </div>
-                    <!-- Reverso del Card (al girar) -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
-                        Ir a Page 2
+                    <div class="absolute inset-0 w-full h-full bg-[#4682b4] rounded-2xl flex items-center justify-center text-white text-2xl font-medium [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir al Paso 2
                     </div>
                 </div>
             </a>
 
-            <!-- CARD 3 -> Enlaza a Page3.html -->
-            <a href="Page3.html" class="group [perspective:1000px] h-72 block">
-                <div class="relative w-full h-50 h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
-                    <!-- Frente del Card -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+            <!-- CARD 3 -> Vincula a page3.html -->
+            <a href="page3.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-lg rounded-2xl">
+                    <div class="absolute inset-0 w-full h-full bg-[#75b9e7] rounded-2xl flex items-center justify-center text-white text-3xl font-medium [backface-visibility:hidden]">
                         page3
                     </div>
-                    <!-- Reverso del Card (al girar) -->
-                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
-                        Ir a Page 3
+                    <div class="absolute inset-0 w-full h-full bg-[#4682b4] rounded-2xl flex items-center justify-center text-white text-2xl font-medium [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir al Paso 3
                     </div>
                 </div>
             </a>
 
         </div>
+
+        <section class="max-w-5xl mx-auto bg-[#1a1a1a] text-gray-200 border border-gray-800 rounded-xl p-6 md:p-8 shadow-2xl">
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-gray-800 text-sm text-gray-400">
+                <div class="flex items-center gap-3 text-white font-medium">
+                    <span class="w-7 h-7 rounded-full bg-gray-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+                    Review Order
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xs font-bold">2</span>
+                    Select Shipping
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xs font-bold">3</span>
+                    Submit
+                </div>
+            </div>
+
+            <!-- Título de sección -->
+            <h2 class="text-xl font-semibold text-white mb-6">Order</h2>
+
+            <!-- Tabla de Productos -->
+            <div class="overflow-x-auto mb-8">
+                <table class="w-full text-left text-sm text-gray-300">
+                    <thead>
+                        <tr class="border-b border-gray-800 text-gray-400">
+                            <th class="py-3 font-medium">Description</th>
+                            <th class="py-3 font-medium text-right">Quantity</th>
+                            <th class="py-3 font-medium text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/50">
+                        <tr>
+                            <td class="py-4 text-white">Product 1</td>
+                            <td class="py-4 text-right">2</td>
+                            <td class="py-4 text-right">20</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 text-white">Product 2</td>
+                            <td class="py-4 text-right">10</td>
+                            <td class="py-4 text-right">150</td>
+                        </tr>
+                        <tr class="font-semibold text-white">
+                            <td class="py-4">Total</td>
+                            <td class="py-4 text-right"></td>
+                            <td class="py-4 text-right">$170</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+                <span class="text-xs text-gray-500 uppercase tracking-wider">Previous</span>
+                <button class="bg-[#333] hover:bg-[#444] text-white text-xs font-semibold px-6 py-2.5 rounded transition shadow">
+                    NEXT
+                </button>
+            </div>
+
+        </section>
     </main>
 
-    <footer></footer>
+    <footer class="text-center mt-12 text-xs text-gray-500">
+        Práctica Calificada 2 - Desarrollo de Aplicaciones Web
+    </footer>
 
 </body>
 </html>
