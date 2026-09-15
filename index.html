@@ -3,29 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Diseño web con 3 cards animados</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <title>Mi página</title>
 </head>
+<body class="bg-white min-h-screen flex flex-col justify-between items-center py-12">
 
-<body class="bg-gray-100">
+    <header class="mb-10">
+        <h1 class="text-2xl md:text-3xl font-medium text-gray-800 tracking-tight">Diseño web con 3 cards animados</h1>
+    </header>
 
-    <div class="min-h-screen flex items-center justify-center">
-        <div class="bg-white p-8 rounded-xl shadow-lg">
-            <h1 class="text-3xl font-bold text-blue-600">
-                ¡Hola Tailwind!
-            </h1>
+    <main class="container mx-auto px-4 flex justify-center items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+            
+            <!-- CARD 1 -> Enlaza a page1.html -->
+            <a href="Page1.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
+                    <!-- Frente del Card -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+                        page1
+                    </div>
+                    <!-- Reverso del Card (al girar) -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir a Page 1
+                    </div>
+                </div>
+            </a>
 
-            <p class="mt-4 text-gray-600">
-                HTML + Tailwind CSS
-            </p>
+            <!-- CARD 2 -> Enlaza a Page2.html -->
+            <a href="Page2.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
+                    <!-- Frente del Card -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+                        page2
+                    </div>
+                    <!-- Reverso del Card (al girar) -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir a Page 2
+                    </div>
+                </div>
+            </a>
 
-            <button class="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Empezar
-            </button>
+            <!-- CARD 3 -> Enlaza a Page3.html -->
+            <a href="Page3.html" class="group [perspective:1000px] h-72 block">
+                <div class="relative w-full h-50 h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)_rotateY(180deg)] shadow-md rounded-xl">
+                    <!-- Frente del Card -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-300 rounded-xl flex items-center justify-center text-white text-3xl font-normal [backface-visibility:hidden]">
+                        page3
+                    </div>
+                    <!-- Reverso del Card (al girar) -->
+                    <div class="absolute inset-0 w-full h-full bg-blue-400 rounded-xl flex items-center justify-center text-white text-2xl font-normal [backface-visibility:hidden] [transform:rotateX(180deg)_rotateY(180deg)]">
+                        Ir a Page 3
+                    </div>
+                </div>
+            </a>
+
         </div>
-    </div>
+    </main>
+
+    <!-- Espaciador inferior -->
+    <footer></footer>
 
 </body>
 </html>
