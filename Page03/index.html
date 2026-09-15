@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda de Plantas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            sm: '480px',
+            md: '900px',
+            lg: '1200px',
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-black font-['Lora',ui-serif,Georgia,serif]">
+    <div
+      class="bg-[#6b6b3a] text-white flex flex-col sm:flex-row items-center justify-center gap-2 py-2 px-4 text-xs sm:text-sm"
+    >
+      <span>-15% en la primera compra</span>
+      <button
+        class="border border-white rounded px-3 py-1 text-xs hover:bg-white hover:text-[#6b6b3a] transition-colors"
+      >
+        Registrarse
+      </button>
+    </div>
+    <nav
+      class="bg-black text-white px-4 sm:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4"
+    >
+      <div
+        class="flex items-center gap-1 border border-white/30 rounded-full p-1 flex-wrap justify-center"
+      >
+        <a href="#" class="bg-orange-600 text-white text-sm px-4 py-2 rounded-full">Plantas</a>
+        <a href="#" class="text-sm px-4 py-2 rounded-full hover:bg-white/10 transition-colors"
+          >Macetas</a
+        >
+        <a href="#" class="text-sm px-4 py-2 rounded-full hover:bg-white/10 transition-colors"
+          >Oferta</a
+        >
+        <a href="#" class="text-sm px-4 py-2 rounded-full hover:bg-white/10 transition-colors"
+          >Suscripciones</a
+        >
+        <a href="#" class="text-sm px-4 py-2 rounded-full hover:bg-white/10 transition-colors"
+          >Cuidado</a
+        >
+      </div>
+
+      <div class="flex items-center gap-4 sm:gap-6">
+        <button
+          class="flex items-center gap-2 border border-white/60 rounded-full pl-1 pr-4 py-1 text-sm hover:bg-white/10 transition-colors"
+        >
+          <span class="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+            <i class="fa-solid fa-user text-black text-[10px]"></i>
+          </span>
+          Entrar
+        </button>
+        <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+        <div class="flex items-center gap-2 cursor-pointer text-sm">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Carrito 0</span>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="bg-black text-white px-4 sm:px-8 pt-16 pb-24 md:pt-24 md:pb-32 lg:pt-28 lg:pb-36"
+    >
+      <h1 class="font-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl">Plantas</h1>
+    </section>
+    <section class="bg-[#EDEAE0] px-4 sm:px-8 py-12 md:py-16">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <h2 class="font-title text-3xl md:text-4xl text-black">Recién llegados</h2>
+        <button
+          class="bg-orange-600 text-white px-5 py-2 rounded self-start sm:self-auto hover:bg-orange-700 transition-colors"
+        >
+          Comprar todo
+        </button>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+        <div
+          class="w-full sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.333%-0.67rem)] lg:basis-[calc(25%-0.75rem)]"
+        >
+          <div class="relative mb-3">
+            <span class="absolute top-2 left-2 bg-[#6b6b3a] text-white text-xs px-2 py-1 rounded z-10"
+              >Recién llegado</span
+            >
+            <img
+              src="./assets/images/planta01-fictus.jpg"
+              alt="Imagen de Ficus Lyrata"
+              class="w-full aspect-square object-cover border border-black/10 opacity-85 hover:opacity-100 transition-opacity duration-200"
+            />
+          </div>
+          <h3 class="font-title text-lg text-black mb-1">Ficus lyrata</h3>
+          <p class="text-black mb-3">$699.99</p>
+          <button
+            class="w-full border border-black text-black py-2 hover:bg-black hover:text-white transition-colors"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+
+        <div
+          class="w-full sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.333%-0.67rem)] lg:basis-[calc(25%-0.75rem)]"
+        >
+          <div class="relative mb-3">
+            <span class="absolute top-2 left-2 bg-[#6b6b3a] text-white text-xs px-2 py-1 rounded z-10"
+              >Recién llegado</span
+            >
+            <img
+              src="./assets/images/planta02-macetero.jpg"
+              alt="Imagen de Macetero"
+              class="w-full aspect-square object-cover border border-black/10 opacity-85 hover:opacity-100 transition-opacity duration-200"
+            />
+          </div>
+          <h3 class="font-title text-lg text-black mb-1">Maceta oxidada</h3>
+          <p class="text-black mb-3">$399.99</p>
+          <button
+            class="w-full border border-black text-black py-2 hover:bg-black hover:text-white transition-colors"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+
+        <div
+          class="w-full sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.333%-0.67rem)] lg:basis-[calc(25%-0.75rem)]"
+        >
+          <div class="relative mb-3">
+            <span class="absolute top-2 left-2 bg-[#6b6b3a] text-white text-xs px-2 py-1 rounded z-10"
+              >Recién llegado</span
+            >
+            <img
+              src="./assets/images/planta03-cactus.jpg"
+              alt="Imagen de Cactus en Macetero"
+              class="w-full aspect-square object-cover border border-black/10 opacity-85 hover:opacity-100 transition-opacity duration-200"
+            />
+          </div>
+          <h3 class="font-title text-lg text-black mb-1">Cactus</h3>
+          <p class="text-black mb-3">$399.99</p>
+          <button
+            class="w-full border border-black text-black py-2 hover:bg-black hover:text-white transition-colors"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+
+        <div
+          class="w-full sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.333%-0.67rem)] lg:basis-[calc(25%-0.75rem)]"
+        >
+          <div class="relative mb-3">
+            <span class="absolute top-2 left-2 bg-[#6b6b3a] text-white text-xs px-2 py-1 rounded z-10"
+              >Recién llegado</span
+            >
+            <img
+              src="./assets/images/planta01-fictus.jpg"
+              alt="Imagen de Cesto de Madera"
+              class="w-full aspect-square object-cover border border-black/10 opacity-85 hover:opacity-100 transition-opacity duration-200"
+            />
+          </div>
+          <h3 class="font-title text-lg text-black mb-1">Cesto de madera</h3>
+          <p class="text-black mb-3">$559.99</p>
+          <button
+            class="w-full border border-black text-black py-2 hover:bg-black hover:text-white transition-colors"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-black text-white px-4 sm:px-8 pt-10 pb-6">
+      <hr class="border-white/20 mb-8" />
+
+      <div class="flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-6 justify-between">
+        <div>
+          <h4 class="font-semibold mb-3">Contacto</h4>
+          <p class="text-sm text-white/70 leading-relaxed">
+            Dirección: Av. Fray A.<br />
+            Alcalde 10 44100<br />
+            Guadalajara, Jal., México<br />
+            Tel: +52-1-33-12345678<br />
+            Email: info@misitio.com
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-3">Tienda</h4>
+          <ul class="text-sm text-white/70 space-y-2">
+            <li>Comprar todo</li>
+            <li>Plantas</li>
+            <li>Macetas</li>
+            <li>Oferta</li>
+            <li>Suscripciones</li>
+            <li>Cuidado</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-3">Enlaces útiles</h4>
+          <ul class="text-sm text-white/70 space-y-2">
+            <li>FAQ</li>
+            <li>Envío y devoluciones</li>
+            <li>Términos y condiciones</li>
+            <li>Métodos de pago</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-3">Empresa</h4>
+          <ul class="text-sm text-white/70 space-y-2">
+            <li>Nosotros</li>
+            <li>Contáctanos</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-3">Horarios</h4>
+          <ul class="text-sm text-white/70 space-y-2">
+            <li>Lun - Vie: 7:00 - 22:00</li>
+            <li>Sábado: 8:00 - 22:00</li>
+            <li>Domingo: 8:00 - 35:00</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="border-white/20 my-8" />
+      <p class="text-center text-sm text-white/60">
+        © 2035 Creado por Estudiantes IX Semestre FIS UNCP
+      </p>
+    </footer>
+    <button
+      class="fixed bottom-6 right-6 bg-[#6b6b3a] text-white w-12 h-12 rounded-lg flex items-center justify-center shadow-lg hover:bg-[#5a5a30] transition-colors"
+    >
+      <i class="fa-regular fa-comment-dots text-lg"></i>
+    </button>
+  </body>
+</html>
