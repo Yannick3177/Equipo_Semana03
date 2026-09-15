@@ -1,14 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <title>Inbox Responsive</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Página 1</title>
+    <style>
+        /* .inbox-grid {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 701px) {
+            .inbox-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .inbox-grid {
+                grid-template-columns: 3fr 2fr;
+            }
+        } */
+    </style>
 </head>
-<body>
-    <P>Actualización de page01 con tailwind</P>
+
+<body class="bg-white">
+
+    <main class="inbox-grid mx-auto grid max-w-[1400px]">
+
+        <!-- Primera sección -->
+
+        <section>
+            <div class="mx-auto w-full max-w-[700px] overflow-hidden rounded-sm bg-[#252525] shadow-md">
+
+                <header class="flex h-12 items-center justify-between bg-[#29b9cf] px-3 text-white">
+
+                    <button class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="18"
+                             height="18"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+
+                    <span class="mr-auto ml-4 text-sm font-medium">
+                        Inbox
+                    </span>
+
+
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="18"
+                             height="18"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2">
+                            <circle cx="11" cy="11" r="7"/>
+                            <path d="m20 20-4-4"/>
+                        </svg>
+                    </button>
+
+                </header>
+
+
+                <!-- Mensajes -->
+                <div class="divide-y divide-[#3b3b3b]">
+
+                    <!-- Título -->
+                    <div class="px-3 pt-3 pb-1 text-[10px] text-gray-400">
+                        HOy día
+                    </div>
+
+
+                    <!-- Mensaje 1 -->
+                    <article class="flex gap-3 px-3 py-3">
+
+                        <img
+                            src="./Assets/image1.jpeg"
+                            alt="All Connors"
+                            class="h-8 w-8 shrink-0 rounded-full"
+                        >
+
+                        <div class="min-w-0 flex-1 text-xs text-gray-300">
+
+                            <h3 class="text-[11px] font-bold text-white">
+                                Brunch this weekend?
+                            </h3>
+
+                            <p class="mt-0.5">
+                                <span class="text-[#27bdd4]">
+                                   Capibara
+                                </span>
+                                —
+                                Will we be in neighborhood doing errand?
+                            </p>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Mensaje 2 -->
+                    <article class="flex gap-3 px-3 py-3">
+
+                        <img
+                            src="./Assets/image2.jpeg"
+                            alt="Scott"
+                            class="h-8 w-8 shrink-0 rounded-full"
+                        >
+
+                        <div class="min-w-0 flex-1 text-xs text-gray-300">
+
+                            <h3 class="text-[11px] font-bold text-white">
+                                Summer BBQ
+                            </h3>
+
+                            <p class="mt-0.5">
+                                <span class="text-[#27bdd4]">
+                                    to Capibara, Gato
+                                </span>
+                                —
+                                Me gustaría ir a visitarlos esta semana
+                            </p>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Mensaje 3 -->
+                    <article class="flex gap-3 px-3 py-3">
+
+                        <img
+                            src="./Assets/image3.jpg"
+                            alt="Sandra"
+                            class="h-8 w-8 shrink-0 rounded-full"
+                        >
+
+                        <div class="min-w-0 flex-1 text-xs text-gray-300">
+
+                            <h3 class="text-[11px] font-bold text-white">
+                                Oui oui
+                            </h3>
+
+                            <p class="mt-0.5">
+                                <span class="text-[#27bdd4]">
+                                    Perro con lentes
+                                </span>
+                                —
+                                Recomendaciones para paris? Algún lugar!!
+                            </p>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Mensaje 4 -->
+                    <article class="flex gap-3 px-3 py-3">
+
+                        <img
+                            src="./Assets/image4.jpeg"
+                            alt="Trevor"
+                            class="h-8 w-8 shrink-0 rounded-full"
+                        >
+
+                        <div class="min-w-0 flex-1 text-xs text-gray-300">
+
+                            <h3 class="text-[11px] font-bold text-white">
+                                Mapache ladron
+                            </h3>
+
+                            <p class="mt-0.5">
+                                <span class="text-[#27bdd4]">
+                                    Trevor 
+                                </span>
+                                —
+                                Tengo algunas ideas para el cumpleaños!!
+                            </p>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Mensaje 5 -->
+                    <article class="flex gap-3 px-3 py-3">
+
+                        <img
+                            src="./Assets/image5.jpeg"
+                            alt="Britta"
+                            class="h-8 w-8 shrink-0 rounded-full"
+                        >
+
+                        <div class="min-w-0 flex-1 text-xs text-gray-300">
+
+                            <h3 class="text-[11px] font-bold text-white">
+                                Recipe to try
+                            </h3>
+
+                            <p class="mt-0.5">
+                                <span class="text-[#27bdd4]">
+                                    Mike c:
+                                </span>
+                                —
+                                We should eat this: Grate, Squash, Corn,
+                                and tomatillo Tacos.
+                            </p>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
 </body>
 </html>
